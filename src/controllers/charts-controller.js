@@ -31,9 +31,9 @@ app.controller('ChartsCtrl', ['$scope', '$stateParams', '$interval', 'MachineSer
             var _rowsInserted = 0;
 
             MachineService
-                .machineData.query({mid: m_id})
+                .liveChartData.query({mid: m_id})
                     .$promise.then(function(response) {
-                        _data_json = response.results.reverse();
+                        _data_json = response
                         // console.log(_data_json);
 
                         for(var idx = 0; idx < _data_json.length; ++idx) {

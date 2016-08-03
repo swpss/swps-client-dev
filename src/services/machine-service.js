@@ -44,6 +44,17 @@ app.factory('MachineService', ['baseUrl', '$resource', function (baseUrl, $resou
 				}
 			}
 		});
+
+	var liveChartDataResource = $resource(baseUrl + 'chartData/:mid/', null,
+		{
+			'query': {
+				method: 'GET',
+				isArray: true,
+				params: {
+					mid: '@mid'
+				}
+			}
+		});
 	
 
 	var recentDataResource = $resource(baseUrl + 'recent/:mid/', null, null);
@@ -57,6 +68,7 @@ app.factory('MachineService', ['baseUrl', '$resource', function (baseUrl, $resou
 		machine: machineResource,
 		machineDetail: machineDetailResource,
 		machineData: machineDataResource,
+		liveChartData: liveChartDataResource,
 		recentData: recentDataResource,
 		rangeData: rangeDataResource,
 		lpdData: lpdDataResource,
