@@ -1,0 +1,63 @@
+<!-- 
+    * Total running days
+    * Fault v/s frequency table
+    * Date, Issue, Solution Table
+    * TODO: Output of AI algorithm
+  -->
+<div layout="column" flex>
+  <div style="width: 60%; margin-left: auto; margin-right: auto;">
+    <form ng-submit="getServiceDetails()">
+      <div layout="row" layout-align="space-around center">
+        <md-input-container>
+          <label>Unique Id </label>
+          <input type="text" ng-model="m_id">
+        </md-input-container>
+        <span>
+          <md-button class="md-primary md-raised" type="submit">Submit</md-button>
+        </span>
+      </div>
+    </form>
+  </div>
+  <div ng-show="serviceData" layout="column" flex layout-padding>
+    <p style="color: red;" ng-show="err_msg">{{err_msg}}</p>
+    <div layout="row" layout-align="space-around center">
+      <div>
+        Total running days: {{ serviceData.total_running_days }}
+      </div>
+      <div>
+        <p>Total number of services done till date: {{serviceData.issues.length}}</p>
+      </div>
+    </div>
+    <div id="serviceTablesContainer" layout="row" layout-align="space-around">
+      <div id="faultFrequencyTable">
+        <table class="table table-striped">
+          <thead>
+            <th>Fault</th>
+            <th>Frequency</th>
+          </thead>
+          <tr ng-repeat="(faultName, faultFrequency) in serviceData.faults">
+            <td> {{faultName}} </td>
+            <td> {{faultFrequency}} </td>
+          </tr>
+        </table>
+      </div>
+      <div id="serviceTable">
+        <table class="table table-striped">
+          <thead>
+            <th>Date</th>
+            <th>Issue</th>
+            <th>Solution</th>
+          </thead>
+          <tr ng-repeat="service in serviceData.issues">
+            <td> {{service.service_date | date:'dd/MM/yyyy'}} </td>
+            <td> {{service.issue}} </td>
+            <td> {{service.solution}} </td>
+          </tr>
+        </table>
+      </div>    
+    </div>
+    <div>
+      <!-- Show the output of the AI algorithm here -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div ng-init="getMachines()">
+  <div layout="row" layout-align="space-around center">
+    <h3>Controllers</h3>
+    <md-button ui-sref="addMachine" class="md-raised">Add new controller</md-button>
+  </div>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Pump</th>
+        <th>Unique Id</th>
+        <th>Integrator</th>
+        <th>Farmer</th>
+        <th>controller Serial No</th>
+        <th>Depth</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="machine in machines" class="machineTableRow" ui-sref="monitor({mid:{{machine.m_id}}})" ng-click="saveMachineData(machine)">
+        <td>{{machine.model.p_make}}</td>
+        <td>{{machine.m_id}}</td>
+        <td>{{machine.sold_by.first_name}}</td>
+        <td>{{machine.bought_by.first_name}}</td>
+        <td>{{machine.serial_number}}</td>
+        <td>{{machine.depth_during_installation}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div layout="row" flex layout-align="space-around center">
+    <md-button ng-show="previousPage" ng-click="getMachines(previousPage)" class="md-raised md-default">
+      Previous
+    </md-button>
+    <md-button ng-show="nextPage" ng-click="getMachines(nextPage)" class="md-raised md-primary">
+      Next
+    </md-button>
+  </div>
+</div>

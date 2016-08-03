@@ -1,0 +1,53 @@
+<div>
+  <h3>New Account Information</h3>
+  <form ng-submit="createNewUser()">
+  {{clients.client}}
+    <md-input-container>
+      <label>First Name</label>
+      <input ng-model="new_account.first_name" type="text">
+    </md-input-container>
+    <md-input-container>
+      <label>Last Name</label>
+      <input ng-model="new_account.last_name" type="text" placeholder="(optional)">
+    </md-input-container>
+    <md-input-container>
+      <label>Email</label>
+      <input ng-model="new_account.email" type="text">
+    </md-input-container>
+    <md-input-container>
+      <label>Password</label>
+      <input ng-model="new_account.password" type="password">
+    </md-input-container>
+    <md-input-container>
+      <label>Re-type Password</label>
+      <input ng-model="new_account.confirm_password" type="password">
+    </md-input-container>
+    <md-input-container>
+      <label>Phone Number</label>
+      <input ng-model="new_account.phone_number" type="text" placeholder="WITHOUT country code">
+    </md-input-container>
+    <md-input-container>
+      <label>Address</label>
+      <textarea ng-model="new_account.address" placeholder="Use commas(,) to separate address lines"></textarea>
+    </md-input-container>
+    <md-checkbox ng-model="new_account.has_smart_phone" aria-label="Smart Phone" ng-true-value="'True'" ng-false-value="'False'" class="md-primary">
+      Has Smart Phone.
+    </md-checkbox>
+    <md-select placeholder="State" ng-model="new_account.location">
+      <md-option value="{{state.code}}" ng-repeat="state in states | orderBy:'name'">
+        {{state.name}}
+      </md-option>
+    </md-select>
+    <md-select placeholder="Account type" ng-model="new_account.account_type">
+        <md-option ng-repeat="(key, val) in USER_TYPES" ng-value="{{key}}" ng-click="getOptions(key)">{{val}}</md-option>
+    </md-select>
+    <md-input-container>
+      <md-select ng-model="new_account.client" ng-hide="!clients.length" placeholder="Clients">
+        <md-option ng-value="client.id" ng-repeat="client in clients">{{client.name}}</md-option>
+      </md-select>
+    </md-input-container>
+    <p style="color: red;">{{err_msg}}</p>
+    <md-button type="submit" class="md-primary md-raised">Create User</md-button>
+    <span><md-button type="reset" class="md-default" ng-click="resetForm()">Cancel</md-button></span>
+  </form>
+</div>

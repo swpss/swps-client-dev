@@ -1,0 +1,15 @@
+<div>
+  <div layout="row" layout-align="space-around center">
+    <h3 align="center">Remote Monitoring</h3>
+    <md-button ui-sref="monitor.editMachine()" class="md-default md-raised">Controller Information</md-button>
+  </div>
+  <hr>
+  <div layout="row" layout-align="space-around center">
+    <md-button ui-sref="monitor.dashboard()" class="md-primary md-raised">Dashboard</md-button>
+    <md-button ui-sref="monitor.liveCharts()" class="md-primary md-raised">Live Charts</md-button>
+    <md-button ui-sref="monitor.stream()" class="md-primary md-raised">Live Data</md-button>
+    <md-button ui-sref="monitor.graphs()" class="md-primary md-raised">Graphs</md-button>
+    <md-button ui-sref="monitor.past()" class="md-primary md-raised">Past Data</md-button>
+  </div>
+  <div ui-view></div>
+</div>

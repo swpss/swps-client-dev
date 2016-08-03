@@ -1,0 +1,131 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+body {
+    font-family: Roboto, sans-serif;
+}
+
+
+h31, h32, h33{
+position: relative;
+color: none;
+left:10px;
+float:left;
+top: -5px;
+border: 1px solid none;
+border-radius: 7px;
+padding: 10px;
+font-size: 1px;
+}
+
+h31{
+background: -moz-radial-gradient(center, ellipse cover, rgba(0,255,0,0.6) 0%, rgba(0,0,0,0.6) 100%); /* ff3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0,255,0,0.6)), color-stop(100%, rgba(0,0,0,0.6))); /* safari4+,chrome */
+background:-webkit-radial-gradient(center, ellipse cover, rgba(0,255,0,0.6) 0%, rgba(0,0,0,0.6) 100%); /* safari5.1+,chrome10+ */
+background: -o-radial-gradient(center, ellipse cover, rgba(0,255,0,0.6) 0%, rgba(0,0,0,0.6) 100%); /* opera 11.10+ */
+background: -ms-radial-gradient(center, ellipse cover, rgba(0,255,0,0.6) 0%, rgba(0,0,0,0.6) 100%); /* ie10+ */
+background:radial-gradient(ellipse at center, rgba(0,255,0,0.6) 0%, rgba(0,0,0,0.6) 100%); /* w3c */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00FF00', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
+}
+
+h32{
+background: -moz-radial-gradient(center, ellipse cover, rgba(255,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%); /* ff3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,0,0,0.6)), color-stop(100%, rgba(0,0,0,0.6))); /* safari4+,chrome */
+background:-webkit-radial-gradient(center, ellipse cover, rgba(255,0,0,0.6) 0%, rgba(0,0,0,6) 100%); /* safari5.1+,chrome10+ */
+background: -o-radial-gradient(center, ellipse cover, rgba(255,0,0,0.6) 0%, rgba(0,0,0,6) 100%); /* opera 11.10+ */
+background: -ms-radial-gradient(center, ellipse cover, rgba(255,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%); /* ie10+ */
+background:radial-gradient(ellipse at center, rgba(255,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%); /* w3c */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
+}
+
+h33{
+background: -moz-radial-gradient(center, ellipse cover, rgba(128,128,128,0.3) 0%, rgba(0,0,0,0.3) 100%); /* ff3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(128,128,128,0.3)), color-stop(100%, rgba(0,0,0,0.3))); /* safari4+,chrome */
+background:-webkit-radial-gradient(center, ellipse cover, rgba(128,128,128,0.3) 0%, rgba(0,0,0,0.3) 100%); /* safari5.1+,chrome10+ */
+background: -o-radial-gradient(center, ellipse cover, rgba(128,128,128,0.3) 0%, rgba(0,0,0,0.3) 100%); /* opera 11.10+ */
+background: -ms-radial-gradient(center, ellipse cover, rgba(128,128,128,0.3) 0%, rgba(0,0,0,0.3) 100%); /* ie10+ */
+background:radial-gradient(ellipse at center, rgba(128,128,128,0.3) 0%, rgba(0,0,0,0.3) 100%); /* w3c */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#808080', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
+}
+
+.red {
+    position: relative;
+    /*margin: 15px auto; #DC143C  rgba(255,0,0,1)*/
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    background: #FF4500 ;
+}
+.green {
+    position: relative;
+    /*margin: 15px auto;*/
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    background: #679b08;
+}
+.reason {
+    position: relative;
+    /*margin: 15px auto;*/
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: yellow;
+}
+
+.celpad { 
+    border-spacing: 15px;
+    border-collapse: separate;
+}
+
+#sidenav {
+    overflow-x: hidden;
+}
+
+#navbarTitle {
+    cursor: pointer;
+}
+
+.sidenavListItemBtn {
+    width: 100%;
+    text-align: left;
+}
+
+#menuIconBtn {
+    margin-left: 10px;
+}
+
+#pastDataForm {
+    display: block;
+    text-align: center;
+}
+
+.machineTableRow {
+    cursor: pointer;
+}
+
+#vfcpLineChartDiv {
+    width: 90%;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #eee;
+    height:300px;
+    margin-left: auto;
+}
+
+#pastDataLoadingSpinner {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    width: 10%;
+}
+
+#serviceTablesContainer {
+}
+
+#faultFrequencyTable {
+    width: 40%;
+}
+
+#serviceTable {
+    width: 40%;
+}

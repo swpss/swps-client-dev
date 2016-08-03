@@ -1,0 +1,33 @@
+<div ng-init="getMachineModels()">
+  <h3>New Controller Information</h3>
+  <form role="form" ng-submit="addNewMachine(new_machine)">
+    <md-select placeholder="Pump" ng-model="new_machine.machine_model">
+      <md-option value="{{model.id}}" ng-repeat="model in models | orderBy:'p_make'">
+        {{model.p_make}}({{model.p_model}})
+      </md-option>
+    </md-select>
+    <md-input-container>
+      <label>Farmer's Phone Number</label>
+      <input type="text" ng-model="new_machine.farmer_phone_number" />
+    </md-input-container>
+    <md-input-container>
+      <label>Unique Id</label>
+      <input type="text" ng-model="new_machine.m_id" />
+    </md-input-container>
+    <md-input-container>
+      <label>Controller Serial Number</label>
+      <input type="text" ng-model="new_machine.serial_number" />
+    </md-input-container>
+    <md-select placeholder="State" ng-model="new_machine.location">
+      <md-option value="{{state.code}}" ng-repeat="state in states | orderBy:'name'">
+        {{state.name}}
+      </md-option>
+    </md-select>
+    <md-input-container>
+      <label>Depth during installation</label>
+      <input type="text" ng-model="new_machine.depth_during_installation" />
+    </md-input-container>
+    <md-button type="submit" class="md-raised md-primary">Add New Controller</md-button>
+    <span><md-button type="reset" class="md-default" ng-click="resetForm()">Cancel</md-button></span>
+  </form>
+</div>

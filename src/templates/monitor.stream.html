@@ -1,0 +1,39 @@
+<p style="color: red;">{{err_msg}}</p>
+<div layout="row" flex layout-align="space-around center" ng-init="getData()">
+  <p>Last Updated: {{lastUpdated | date: 'dd MMMM yyyy hh:mm:ss a'}}</p>
+  <md-button ng-click="getData(previousPage)" ng-disabled="!previousPage" class="md-raised md-default">
+      Previous
+  </md-button>
+  <md-button ng-click="getData(nextPage)" ng-disabled="!nextPage" class="md-raised md-primary">
+      Next
+  </md-button>
+</div>
+<table class="table table-striped" ng-if="showData">
+<thead>
+  <th>Date</th>
+  <th>Status</th>
+  <th>Machine Status</th>
+  <th>Current</th>
+  <th>Voltage </th>
+  <th>Frequency</th>
+  <th>Power</th>
+  <th>LPM</th>
+  <th>Output Current</th>
+  <th>Output Voltage</th>
+</thead>
+<tbody>
+  <tr ng-repeat="dataset in datasets | orderBy:'-id'">
+    <td>{{dataset.timestamp | date: 'dd MMMM yyyy hh:mm:ss a'}}</td>
+    <td>{{dataset.data.status}}</td>
+    <td>{{dataset.data.due_to}}</td>
+    <td>{{dataset.data.current | number: 2}}</td>
+    <td>{{dataset.data.voltage | number: 2}}</td>
+    <td>{{dataset.data.frequency | number: 2}}</td>
+    <td>{{dataset.data.power | number: 3}}</td>
+    <td>{{dataset.data.lpm | number: 2}}</td>
+    <td>{{dataset.data.output_current | number: 2}}</td>
+    <td>{{dataset.data.output_voltage | number: 2}}</td>
+  </tr>  
+</tbody>
+</table>
+<p ng-if="!showData">No live data</p>

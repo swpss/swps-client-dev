@@ -1,0 +1,32 @@
+{
+  "name": "swps-client",
+  "version": "1.0.0",
+  "homepage": "https://github.com/cybermotionind/swps-client",
+  "authors": [
+    "Anvesh Arrabochu <anvesh.kumar08@gmail.com>"
+  ],
+  "description": "This is a web client for the swps REST API.",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angular-resource": "~1.4.3",
+    "angular-route": "~1.4.3",
+    "angular-ui-router": "~0.2.15",
+    "ngstorage": "~0.3.7",
+    "angular-animate": "~1.4.3",
+    "angular-aria": "~1.4.3",
+    "angular-material": "~0.10.0",
+    "bootstrap": "~3.3.5"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.3"
+  }
+}

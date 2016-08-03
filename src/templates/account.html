@@ -1,0 +1,42 @@
+<h3>Account Information</h3>
+<div ng-init="getUserAccount()">
+  <div ng-show="isLoggedIn">
+    <form role="form">
+      <md-input-container>
+        <label>First Name </label>
+        <input ng-model="accountInfo.first_name">
+      </md-input-container>
+      <md-input-container>
+        <label>Last Name </label>
+        <input ng-model="accountInfo.last_name">
+      </md-input-container>       
+      <md-input-container>
+        <label>Email </label>
+        <input ng-model="accountInfo.email">
+      </md-input-container>
+      <md-input-container>
+        <label>Phone Number </label>
+        <input ng-model="accountInfo.phone_number">
+      </md-input-container>
+      <md-input-container>
+        <label>Address </label>
+        <textarea ng-model="accountInfo.address"></textarea>
+      </md-input-container>
+      <md-select placeholder="State" ng-model="accountInfo.location">
+        <md-option value="{{state.code}}" ng-repeat="state in states | orderBy:'name'">
+          {{ state.name }}
+        </md-option>
+      </md-select>
+      <md-input-container>
+        <label>Password </label>
+        <input ng-model="accountInfo.password" type="password">
+      </md-input-container>
+      <md-input-container>
+        <label>Confirm password </label>
+        <input ng-model="accountInfo.confirm_password" type="password">
+      </md-input-container>
+      <p style="color: red;">{{err_msg}}</p>
+      <md-button class="md-primary md-raised" ng-click="editProfile()">Save changes</md-button>
+    </form>
+  </div>
+</div>

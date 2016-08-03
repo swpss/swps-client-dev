@@ -1,0 +1,59 @@
+<div class="modal fade" id="solutionFormModal" ng-show="showingSolutionForm">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="solutionFormModalLabel">Submit Solution</h4>
+      </div>
+      <div class="modal-body">
+        <form ng-submit="submitSolution(solution)">
+          <md-input-container>
+            <md-checkbox ng-model="solution.isResolved">
+              Has the issue been resolved? {{ solution.isResolved ? "Yes" : "No"}}
+            </md-checkbox>
+          </md-input-container>
+          <md-input-container>
+            <label>Please provide a brief description of the solution</label>
+            <textarea ng-model="solution.description"></textarea>
+          </md-input-container>
+          <div layout="row">
+            <md-button class="md-primary md-raised" type="submit">Submit</md-button>
+            <md-button class="md-default" type="button" data-dismiss="modal" aria-label="Close">Cancel</md-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="color: red;">{{err_msg}}</p>
+<table class="table table-striped" ng-init="getComplaints()">
+  <thead>
+    <th>Date</th>
+    <th>Unique Id</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th>Issue</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="complaint in complaints | orderBy:'-id'">
+        <!-- Modal should be fired if the checkbox is clicked
+              refer: ng-change
+          -->
+      <td>{{complaint.date_added | date: 'dd MMMM yyyy'}}</td>
+      <td>{{complaint.machine.m_id}}</td>
+      <td>{{complaint.user.first_name}}</td>
+      <td>{{complaint.machine.address}}</td>
+      <td>{{complaint.user.phone_number}}</td>
+      <td>{{complaint.issue.description}}</td>
+      <td>{{complaint.description}}</td>
+      <td>
+        <md-button class="md-primary md-raised" ng-disabled="complaint.isResolved" data-toggle="modal" data-target="#solutionFormModal" ng-click="issueResolved(complaint)">
+          {{ complaint.isResolved ? "RESOLVED" : "RESOLVE"}}
+        </md-button>
+      </td>
+    </tr>  
+  </tbody>
+</table>

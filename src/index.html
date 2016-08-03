@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Smart Water Pumping System - CybermotionEnergy </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vendor -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="vendor.js"></script>
+    <link rel="stylesheet" type="text/css" href="vendor.css" />
+
+    <!-- Custom -->
+    <script type="text/javascript" src="custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="custom.css" />
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <header ng-include="'templates/nav.html'"></header>
+    <div layout="row" layout-fill ng-init="getUserAccount();">
+      <!-- Sidenav -->
+      <md-sidenav id="sidenav" md-component-id="left" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-md')">
+        <div layout="column" flex>
+          <md-list>
+            <md-list-item ng-hide="isLoggedIn">
+              <md-button class="sidenavListItemBtn" flex ui-sref="login">Login</md-button>
+            </md-list-item>
+            <md-list-item ng-show="isLoggedIn">
+              <md-button class="sidenavListItemBtn" flex ui-sref="myaccount">My Account</md-button>
+            </md-list-item>
+            <md-list-item ng-show="isLoggedIn">
+              <md-button class="sidenavListItemBtn" flex ui-sref="users">Users</md-button>
+            </md-list-item>
+            <md-list-item ng-show="isLoggedIn">
+              <md-button class="sidenavListItemBtn" flex ui-sref="machines">Controllers</md-button>
+            </md-list-item>         
+            <md-list-item>
+              <md-button class="sidenavListItemBtn" flex ng-show="isLoggedIn" ui-sref="support">Support</md-button>
+            </md-list-item>
+            <md-list-item>
+              <md-button class="sidenavListItemBtn" flex ng-show="isLoggedIn" ui-sref="analytics">Analytics</md-button>
+            </md-list-item>
+            <md-list-item ng-controller="LogoutCtrl" ng-show="isLoggedIn">
+              <md-button class="sidenavListItemBtn" flex ng-click="logout()" ui-sref="home">Logout</md-button>
+            </md-list-item>
+          </md-list>         
+        </div>
+      </md-sidenav>
+
+      <!-- Main content -->
+      <md-content class="md-padding" md-dynamic-height flex>
+        <div ui-view></div>
+      </md-content>
+    </div>  
+  </body>
+</html>

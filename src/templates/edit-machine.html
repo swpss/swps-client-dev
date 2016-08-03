@@ -1,0 +1,33 @@
+<div ng-init="editMachineInformation.init()">
+  <div ng-show="isLoggedIn">
+    <form role="form">
+      <md-input-container>
+        <label>Serial Number</label>
+        <input type="text" ng-model="machine.serial_number" />
+      </md-input-container>
+      <md-input-container>
+        <label>Unique Id</label>
+        <input ng-model="machine.m_id">
+      </md-input-container>
+      <md-input-container>
+        <label>Installation depth</label>
+        <input ng-model="machine.depth_during_installation">
+      </md-input-container>       
+      <md-input-container>
+        <label>Installation date (YYYY-MM-DD)</label>
+        <input ng-model="machine.date_of_installation">
+      </md-input-container>
+      <md-input-container>
+        <label>Inspection date (YYYY-MM-DD)</label>
+        <input ng-model="machine.date_of_inspection">
+      </md-input-container>
+      <md-select placeholder="State" ng-model="machine.location">
+        <md-option value="{{state.code}}" ng-repeat="state in states | orderBy:'name'">
+          {{ state.name }}
+        </md-option>
+      </md-select>
+      <p style="color: red;">{{err_msg}}</p>
+      <md-button class="md-primary md-raised" ng-click="editMachineInformation.update()">Save changes</md-button>
+    </form>
+  </div>
+</div>

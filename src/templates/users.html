@@ -1,0 +1,58 @@
+<div ng-init="getUsers()">
+  <div layout="row" layout-align="space-around center">
+    <h3>Users</h3>
+    <md-button ui-sref="addUser" class="md-raised">Add new user</md-button>
+    <form method="GET" ng-submit="searchUser(keyword)">
+      <md-input-container>
+        <label>Search user..</label>
+        <input type="text" ng-model="keyword">
+      </md-input-container>
+    </form>
+  </div>
+  <hr>
+  <p style="color: red;">{{err_msg}}</p>
+  <div class="modal fade" id="detailModal" ng-show="showingUser">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">User Details</h4>
+        </div>
+        <div class="modal-body">
+          <p><label>First Name </label> {{detail_user.first_name}}</p>
+          <p><label>Last Name </label> {{detail_user.last_name}}</p>
+          <p><label>Email </label> {{detail_user.email}}</p>
+          <p><label>Account Type </label> {{detail_user.account_type}}</p>
+          <p><label>Phone Number </label> {{detail_user.phone_number}}</p>
+          <p><label>Address </label> {{detail_user.address}}</p>
+          <p><label>Member since </label> {{detail_user.created_at | date:'MMM dd yyyy hh:mm a'}}</p>
+          <p><label>Last Updated </label> {{detail_user.modified_at | date:'MMM dd yyyy hh:mm a'}}</p>        
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped" id="usersTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+      <tr data-toggle="modal" data-target="#detailModal" ng-click="getUserDetail(user)" ng-repeat="user in users">
+        <td>{{user.first_name + ' '}}{{user.last_name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone_number}}</td>
+        <td>{{user.account_type}}</td>
+      </tr>
+  </table>
+  <div layout="row" flex layout-align="space-around center">
+    <md-button ng-show="previousPage" ng-click="getUsers(previousPage)" class="md-raised md-default">
+      Previous
+    </md-button>
+    <md-button ng-show="nextPage" ng-click="getUsers(nextPage)" class="md-raised md-primary">
+      Next
+    </md-button>
+  </div>
+</div>

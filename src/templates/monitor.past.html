@@ -1,0 +1,82 @@
+<p style="color: red;">{{err_msg}}</p>
+<div ng-show="past.showForm" id="pastDataForm">
+  <br>
+  <form class="form form-inline">
+    <div class="form-group">
+      <label>Start Date</label>
+      <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup="{{datePicker.format}}" ng-model="datePicker.startDate.date" is-open="datePicker.startDate.opened" max-date="datePicker.today" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="datePicker.startDate.toggle()">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>  
+    </div>
+    <div class="form-group">
+      <label>End Date</label>
+      <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup="{{datePicker.format}}" ng-model="datePicker.endDate.date" is-open="datePicker.endDate.opened" max-date="datePicker.today" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="datePicker.endDate.toggle()">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+    </div>
+    <md-button class="md-primary md-raised form-control" ng-click="getPreviousData()">Get data</md-button>
+  </form>
+</div>
+<div ng-hide="past.showForm">
+  <div layout="row" layout-align="space-around center">
+      <md-button class="md-primary md-raised" ng-click="printData()">
+        Print data
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="downloadData()">
+        Download data
+      </md-button>
+  </div>
+
+   <div>
+     <md-button class="md-primary md-raised" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+        Previous
+    </md-button>
+    {{currentPage+1}}/{{numberOfPages()}}
+    <md-button class="md-primary md-raised" ng-disabled="currentPage >= datasets.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+        Next
+    </md-button>
+  </div>
+  <div id="pastDataTable">
+    <table class="table table-striped">
+    <thead>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Fault</th>
+      <th>Current</th>
+      <th>Voltage </th>
+      <th>Frequency</th>
+      <th>Power</th>
+      <th>LPM</th>
+      <th>Output Current</th>
+      <th>Output Voltage</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="dataset in datasets | orderBy:'-id'| startFrom:currentPage*pageSize | limitTo:pageSize">
+        <td>{{dataset.timestamp | date: 'dd MMMM yy hh:mm:ss a'}}</td>
+        <td>{{dataset.data.status}}</td>
+        <td>{{dataset.data.due_to}}</td>
+        <td>{{dataset.data.current | number: 2}}</td>
+        <td>{{dataset.data.voltage | number: 2}}</td>
+        <td>{{dataset.data.frequency | number: 2}}</td>
+        <td>{{dataset.data.power | number: 2}}</td>
+        <td>{{dataset.data.lpm | number: 2}}</td>
+        <td>{{dataset.data.output_current | number: 2}}</td>
+        <td>{{dataset.data.output_voltage | number: 2}}</td>
+      </tr>  
+    </tbody>
+    </table>
+  </div>
+  <div id="pastDataLoadingSpinner">
+    <md-progress-circular md-mode="indeterminate" ng-show="isLoading" md-diameter="48"></md-progress-circular>  
+  </div>
+</div>

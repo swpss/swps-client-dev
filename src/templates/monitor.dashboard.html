@@ -1,0 +1,104 @@
+<!-- Remote monitoring dashboard page -->
+<div layout="row" flex layout-align="space-around center" ng-init="getSummaryData('day')">
+  <p>
+    Showing data of the past {{period}}
+  </p>
+  <md-select ng-model="period" ng-change="getSummaryData(period)" placeholder="Select a time period">
+    <md-option ng-value="key" ng-repeat="(key, val) in periodOptions">{{ val }}</md-option>
+  </md-select>
+</div>
+<div id="serviceTablesContainer" layout="row" layout-align="space-around">
+      <div id="StatusTable" >
+        <table class="celpad">
+        <thead>
+          <tr>
+            <thead>Motor and Controller Running status</thead>
+          </tr>
+        </thead>
+          <tbody>
+          <tr ng-show="status_data.status == 0">
+            <td>
+              <div class='green'>
+              </div>
+            </td>
+            <td>Controller On</td>
+          </tr>
+          <tr ng-hide="status_data.status == 0">
+            <td>
+              <div class='red'>
+              </div>
+            </td>
+            <td>Controller Off</td>
+          </tr>
+          <tr ng-show="status_data.due_to==0">
+            <td>
+              <div class='green'>
+              </div>
+            </td>
+            <td>Motor On</td>
+          </tr>  
+          <tr ng-hide="status_data.due_to==0">
+            <td>
+              <div class='red'>
+              </div>
+            </td>
+            <td class="red_text">Motor Off</td>
+          </tr>
+          <tr ng-hide="status_data.due_to==0">
+            <td>
+              <div class='red'>
+              </div>
+            </td>
+            <td class="reason_text">{{faults[status_data.due_to]["fault"]}}</td>
+          </tr>   
+          </tbody>
+        </table>
+      </div> 
+       <div id="CalculationTable">
+        <table class="table table-striped">
+          <tr>
+            <th>Total Duration</th>
+            <td>{{totalDurationInHrs}}</td>
+          </tr>
+          <tr>
+            <th>Total Litres Pumped</th>
+            <td>{{totalLPD | number: 2}}L</td>
+          </tr>
+          <tr>
+            <th>Total Energy Utilized</th>
+            <td>{{totalEnergyUsed | number : 2}}KwH</td>
+          </tr>
+          <tr>
+            <th>Average Voltage</th>
+            <td>{{avgVoltage | number: 2}}V</td>
+          </tr>
+          <tr>
+            <th>Average Current</th>
+            <td>{{avgCurrent | number: 2}}A</td>
+          </tr>
+          <tr>
+            <th>Average Power</th>
+            <td>{{avgPower | number: 2}}Kw</td>
+          </tr>
+        </table>
+      </div>   
+    </div>
+    <div ng-hide="fault_data == 0">
+     <table class="table table-striped">
+          <thead>
+            <th>Fault</th>
+            <th>Occured</th>
+            <th>Occured in Period of</th>
+            <th>Reasons</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="data in fault_data  ">
+              <td>{{faults[data[1]]["fault"]}}</td>
+              <td>{{data[0][2]}}</td>
+              <td>{{fault_period[data[0][1]]}}</td>
+              <td>{{faults[data[1]]["reason"]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>  
+

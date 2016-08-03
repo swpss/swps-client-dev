@@ -1,0 +1,36 @@
+<div ng-init="getMachineModels()">
+  <p style="color: red;">{{err_msg}}</p>
+  <h3>New Complaint</h3>
+  <form role="form" ng-submit="addNewComplaint(new_complaint)">
+    <md-input-container>
+      <label>Phone</label>
+      <input type="text" ng-model="new_complaint.m_id">
+    </md-input-container>
+    <md-input-container>
+      <md-select ng-model="new_complaint.issue_id" ng-init="getIssues()" placeholder="Select an issue">
+        <md-option ng-value="issue.id" ng-repeat="issue in issues" ng-click="getReasons(issue.id)" >{{ issue.description }}</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <md-select ng-model="new_complaint.reason_id" ng-disabled="!reasons.length" placeholder="Probable causes">
+        <md-option ng-value="reason.id" ng-repeat="reason in reasons"
+            ng-click="getSolutions(new_complaint.issue_id, reason.id)">
+          {{ reason.description }}
+        </md-option>
+      </md-select>
+    </md-input-container>
+    <div layout="column" flex>
+      <md-input-container>
+        <md-checkbox ng-click="getUserSol()" ng-model="userSolutions[solution.id]" ng-repeat="solution in solutions">
+          {{ solution.description }}
+        </md-checkbox>
+      </md-input-container>
+    </div>
+    <md-input-container ng-show="isAllowedToRegister()" >
+      <label>Please provide a brief description of the problem</label>
+      <textarea ng-model="new_complaint.description"></textarea>
+    </md-input-container>
+    <md-button type="submit" class="md-raised md-primary" ng-disabled="!isAllowedToRegister()">Register complaint</md-button>
+    <span><md-button type="reset" class="md-default" ng-click="resetForm()">Cancel</md-button></span>
+  </form>
+</div>
